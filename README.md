@@ -1,4 +1,6 @@
-![knight](https://github.com/gametheorycoin/gametheorygames/blob/master/client/static/knight.png)
+<div align="center">
+  ![knight](https://github.com/gametheorycoin/gametheorygames/blob/master/client/static/knight.png)
+</div>
 
 <h1 align="center">
   Game Theory Games
