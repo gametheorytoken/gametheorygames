@@ -1,6 +1,6 @@
-<div align="center">
-  # Game Theory Games
-</div>
+<h1 align="center">
+  Game Theory Games
+</h1>
 
 ![gameboard](https://github.com/gametheorycoin/gametheorygames/blob/master/client/static/gameboard.png)
 
