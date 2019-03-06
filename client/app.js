@@ -23,18 +23,10 @@ App = {
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
       web3 = new Web3(App.web3Provider);
     }
-    return App.initContract();
+    return App.initContractGasPrice();
   },
 
   // create contracts
-  initContract: function() {
-    $.getJSON("Election.json", function(election) {
-      App.contracts.Election = TruffleContract(election);
-      App.contracts.Election.setProvider(App.web3Provider);
-      return App.initContractGasPrice();
-    });
-  },
-
   initContractGasPrice: function() {
     $.getJSON("GasPrice.json", function(gasPrice) {
       App.contracts.GasPrice = TruffleContract(gasPrice);
