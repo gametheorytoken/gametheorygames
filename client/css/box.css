@@ -1,0 +1,175 @@
+/* The fast, new way! */
+.fast-transition {
+  position: relative; /* For positioning the pseudo-element */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  height: 200px;
+  width: 350px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.fast-transition::before {
+  /* Position the pseudo-element. */
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 20px;
+
+  /* Create the box shadow at expanded size. */
+  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
+
+  /* Hidden by default. */
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.fast-transition:hover::before {
+  /* Show the pseudo-element on hover. */
+  opacity: 1;
+  border-radius: 20px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Create two equal columns that floats next to each other */
+.columntwol {
+  float: left;
+  text-align: center;
+}
+.columntwor {
+  float: left;
+  width: 200px;
+  height: 25px;
+  padding-left: 75px;
+  padding-top: 20px;
+  width: 50%;
+  text-align: center;
+}
+/* Clear floats after the columns */
+.rowtwo:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Create two equal columns that floats next to each other */
+.columnthreel {
+  float: left;
+  padding-left: 20px;
+  width: 10px;
+  text-align: center;
+}
+.columnthreer {
+  float: left;
+  width: 20px;
+  height: 25px;
+  padding-left: 10px;
+  width: 50%;
+  text-align: center;
+}
+/* Clear floats after the columns */
+.rowthree:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.piccolumn {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.piccolumn:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.second {
+  position: relative; /* For positioning the pseudo-element */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  height: 100px;
+  width: 100px;
+  margin-top: 10px;
+  margin-left: -50px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom right, red, yellow), url("static/gas.png") no-repeat fixed;
+}
+/*
+html,body{
+  height:100%;
+}
+body{
+  text-align:center;
+}
+body:before{
+  content:'';
+  height:100%;
+  display:inline-block;
+  vertical-align:middle;
+} */
+
+/* Create two equal columns that floats next to each other */
+
+button{
+  /* background:#FDFEF2; */
+  background-color: white;
+  border: 2px solid black; /* Green */
+  color:black;
+  position:relative;
+  height:40px;
+  font-size:1em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  border-radius: 7px;
+  outline:none;
+  margin-top: -100px;
+}
+button:hover{
+  background:#fff;
+  border: none;
+  color:black;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: black;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+

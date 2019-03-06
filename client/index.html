@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Game Theory Games</title>
+    <link rel="shortcut icon" type="image/png" href="static/favicon.ico"/>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/box.css" rel="stylesheet", type="text/css">
+  </head>
+
+  <body>
+    <div class="container" style="width: 850px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="text-center">Game Theory Games</h1>
+          <img src="static/knight.png" style="display: block; margin-left: auto; margin-right: auto; height: 150px; width: 150px;"/>
+          <hr/>
+          <h4 class="text-center"> Choose your game to win Game Theory Tokens </h4>
+          <div id="loader">
+          </div>
+          <div id="content" style="display: none;">
+            <hr/>
+            <div style="height: 500px; width: 850px;">
+              <div class="row">
+                <div class="column">
+                  <div class="fast-transition">
+                    <h3 style="padding-top: 2.5px;">Lowest Gas Price per Block</h3>
+                    <div class="button-column">
+                      <div class="rowtwo">
+                        <div class="columntwol">
+                          <div class="second" style="background: url('static/gas.png') center center no-repeat, linear-gradient(to bottom right, red, yellow);"></div>
+                        </div>
+                        <div class="columntwor">
+                          <h5> Previous Low: </h5>
+                          <div class="rowthree">
+                            <div class="columnthreel">
+                              <p id="lowestGas"></p>
+                            </div>
+                            <div class="columnthreer">
+                              GWei
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button onclick="App.playGasPrice(); return false;">Send Tx</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="column">
+                  <div class="fast-transition">
+                    <h3 style="padding-top: 2.5px;">Last Block Without a Tx</h3>
+                    <div class="button-column">
+                      <div class="rowtwo">
+                        <div class="columntwol">
+                          <div class="second" style="background:url(static/block.png) center center no-repeat, linear-gradient(to bottom right, #0052D4, #6FB1FC);"></div>
+                        </div>
+                        <div class="columntwor">
+                          <h5> Current Streak: </h5>
+                          <div class="rowthree">
+                            <div class="columnthreel">
+                              <p id="lastBlock"></p>
+                            </div>
+                            <div class="columnthreer">
+                              Blocks
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button onclick="App.playNoTx(); return false;">Send Tx</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="column">
+                  <div class="fast-transition">
+                    <h3 style="padding-top: 2.5px;">Current Owner</h3>
+                    <div class="button-column">
+                      <div class="rowtwo">
+                        <div class="columntwol">
+                          <div class="second" style="background:url(static/crown.png) center center no-repeat, linear-gradient(to bottom right, #9796f0, #fbc7d4);"></div>
+                        </div>
+                        <div class="columntwor">
+                          <h5> Current King: </h5>
+                          <div class="rowthree">
+                            <div class="columnthreel">
+                              <p id="currentKing"></p>
+                            </div>
+                            <div class="columnthreer">
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button onclick="App.playCurrentKing(); return false;">Send Tx</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="column">
+                  <div class="fast-transition">
+                    <h3 style="padding-top: 2.5px;">Auction</h3>
+                    <div class="button-column">
+                      <div class="rowtwo">
+                        <div class="columntwol">
+                          <div class="second" style="background:url(static/gavel.png) center center no-repeat, linear-gradient(to bottom right, #BBD2C5, #536976);"></div>
+                        </div>
+                        <div class="columntwor">
+                          <h5> Current Price: </h5>
+                          <div class="rowthree">
+                            <div class="columnthreel">
+                              <p id="currHighest"></p>
+                            </div>
+                            <div class="columnthreer">
+                              ETH/GTT
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <button onclick="App.playAuction(); return false;">Send Tx</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <br />
+
+            <hr/>
+            <hr/>
+            <h3 class="text-center"> How It Works </h3>
+            Game Theory Tokens (GTT) are rare ERC20 tokens that reward you for outsmarting your oponents in various scenarios. Play the games above to prove yourself and win Game Theory Tokens.
+
+            <strong>The tokens are only created and distributed through these four games. There is no owner and no way to create tokens, other than winning these games. There is no premine and there will only ever be a finite number available.</strong>
+
+            The games will distribute tokens for approximately one year, at which point all of the tokens will be minted and no more will ever be created. The token code is publicly avaialble and the previous sentence can be verified by anyone.
+
+            <br /><br />
+
+            There will only ever be 1 million GTT created. The rewards for each game have been calculated in such a way that they should each distribute 1/4 of the tokens over the course of the year, provided they are played continuously. The game distribution may diverge over time as players tend to favor one game over the others (this assumes 2M mined blocks a year).
+
+            </br /><br />
+
+            <em> Note: The winning tokens for each game are distributed upon the transaction following the winning transaction. The creator will recieve 1% of tokens awarded to players for ongoing development support.</em>
+
+            <h3 class="text-center"> The Games </h3>
+            <strong>Lowest Gas Price per Block - 0.125 GTT/reward</strong>: The user who pays the <em>lowest</em> gasPrice in a block for a transaction to this contract wins the tokens. You are not only playing against other players, but with miners who may or may not include your transaction at such a low cost. If multiple transactions with the same gasPrice are included in a single block, the winner will be the user's transaction that is chosen <em>last</em> by miners.
+            <br /><br />
+            <strong>Last Block Without a Tx - 1.25 GTT/reward</strong>:  The reward for this game goes to the last player to have a transaction processed on this contract <em>with no other successful transactions sent to this contract in the following block</em>. These battles can go on for blocks at a time before a winner is chosen.
+            <br /><br />
+            <strong>Current King - 0.1 GTT/reward</strong>: The owner of the last successful transaction to this contract will recieve a reward for each block that is processed that nobody else has a successful transaction to.
+            <br /><br />
+            <strong>Auction - 6.25 GTT/reward</strong>: Players participate in a bidding fee auction auction that lasts 50 blocks. Auctions are only started by sending in a first bid. Should you wait to the last minute and your transaction may not be mined. Go to early and you will reveal your bid.
+
+            <h3 class="text-center"> Inspiration </h3>
+
+            This website and these contracts were inspired by <a href="https://twitter.com/soundmoneycoin/">SoundMoneyCoin</a> and the intellectual spirit of the Ethereum Community.
+
+            <br /><br /><br /><br /><br />
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="app.js"></script>
+    <!-- <script -->
+  </body>
+</html>
