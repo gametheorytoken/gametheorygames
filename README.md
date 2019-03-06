@@ -1,3 +1,3 @@
 # gametheorytoken-web
 
-The front-end interface for GameTheoryToken.
+![gameboard](https://github.com/gametheorycoin/gametheorygames/blob/master/client/static/gameboard.png)
