@@ -1,7 +1,6 @@
 .env
 node_modules/
 migrations/
-build/
 .DS_Store
 
 
