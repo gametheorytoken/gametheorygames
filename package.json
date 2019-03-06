@@ -17,11 +17,11 @@
   "dependencies": {
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "truffle-hdwallet-provider": "^1.0.1"
+    "truffle-hdwallet-provider": "^1.0.5"
   },
   "devDependencies": {
     "truffle-contract": "^4.0.0",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
   }
 }
