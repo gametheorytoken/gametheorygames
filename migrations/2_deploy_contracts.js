@@ -5,12 +5,16 @@ var CurrentKing = artifacts.require('CurrentKing.sol');
 var Auction = artifacts.require('Auction.sol');
 
 module.exports = function(deployer) {
-  // deploy games
-  deployer.deploy(GasPrice);
-  deployer.deploy(NoTx);
-  deployer.deploy(CurrentKing);
-  deployer.deploy(Auction);
 
-  // deploy tokens with game addresses
-  deployer.deploy(GTT, GasPrice.address, NoTx.address, CurrentKing.address, Auction.address);
+  deployer.deploy(GasPrice).then(function() {
+    return deployer.deploy(NoTx).then(function() {
+      return deployer.deploy(CurrentKing).then(function() {
+        return deployer.deploy(Auction).then(function() {
+          // deploy tokens with game addresses
+          return deployer.deploy(GTT, GasPrice.address, NoTx.address, CurrentKing.address, Auction.address).then(function(){
+          })
+        })
+      })
+    })
+  })
 };

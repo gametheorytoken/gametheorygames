@@ -19,7 +19,7 @@ contract GasPrice {
   address public currWinner;
 
   constructor() public {
-    lastPaidBlock = block.number;
+    lastPayout = block.number;
   }
 
   // can only be called once
