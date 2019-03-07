@@ -47,7 +47,7 @@
                         </div>
                       </div>
                 			<input type="text" class="form__field" placeholder="Enter Gas Price" id="gasPriceEntry" />
-                			<button onclick="App.playGasPrice(); return false;">Send Tx</button>
+                			<button onclick="App.playGasPrice(document.getElementById('gasPriceEntry').value); return false;">Send Tx</button>
                   </div>
                   </div>
                 </div>
@@ -99,7 +99,7 @@
                           </div>
                         </div>
                       </div>
-                      <input type="text" class="form__field" placeholder="Enter Gas Price" id="gasPriceEntry" id="currentKingEntry" />
+                      <input type="text" class="form__field" placeholder="Enter Gas Price" id="currentKingEntry" />
                 			<button onclick="App.playCurrentKing(); return false;">Send Tx</button>
                     </div>
                   </div>

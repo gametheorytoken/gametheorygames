@@ -3,11 +3,10 @@ App = {
   contracts: {},
   account: '0x0',
   hasVoted: false,
-  gameGasPriceAddress: "0xc372B7985580ec9c7EB797e49e00C39755D05901",
+  gameGasPriceAddress: "0x0517c259b0a042B9981d7D8475A9720169aB431e",
   gameNoTxAddress: "0xfbb33A896f834E1470eB86840001bd1241ffbCe1",
   gameCurrentKingAddress: "0x26A33402F20992417070d8f319BBa32aF28BDF13",
   gameAuctionAddress: "0x02F22652e594ab44db7527b2F3cD5523253429eE",
-
   init: function() {
     return App.initWeb3();
   },
@@ -124,37 +123,39 @@ App = {
   },
 
   // send transactions
-  playGasPrice: function() {
+  playGasPrice: function(gasPriceEntry) {
     App.contracts.GasPrice.at(App.gameGasPriceAddress).then(function(instance) {
-      var gasPriceEntry = $('#gasPriceEntry');
-      return instance.play({ from: App.account, gasPrice: gasPriceEntry });
+      gasPriceEntryWei = gasPriceEntry * (10**9)
+      console.log(gasPriceEntryWei)
+      console.log
+      return instance.play({ from: App.account, gasPrice: gasPriceEntryWei });
     }).catch(function(err) {
       console.error(err);
     });
   },
 
-  playNoTx: function() {
+  playNoTx: function(noTxEntry) {
     App.contracts.NoTx.at(App.gameNoTxAddress).then(function(instance) {
-      var noTxEntry = $('#noTxEntry');
-      return instance.play({ from: App.account, gasPrice: noTxEntry });
+      noTxEntryWei = noTxEntry * (10**9)
+      return instance.play({ from: App.account, gasPrice: noTxEntryWei });
     }).catch(function(err) {
       console.error(err);
     });
   },
 
-  playCurrentKing: function() {
+  playCurrentKing: function(currentKingEntry) {
     App.contracts.CurrentKing.at(App.gameCurrentKingAddress).then(function(instance) {
-      var currentKingEntry = $('#currentKingEntry');
-      return instance.play({ from: App.account, gasPrice: currentKingEntry });
+      currentKingEntryWei = currentKingEntry * (10**9)
+      return instance.play({ from: App.account, gasPrice: currentKingEntryWei });
     }).catch(function(err) {
       console.error(err);
     });
   },
 
-  playAuction: function() {
+  playAuction: function(auctionEntry) {
     App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
-      var auctionEntry = $('#auctionEntry');
-      return instance.play({ from: App.account, value: auctionEntry });
+      auctionEntryWei = auctionEntry * (10**18)
+      return instance.play({ from: App.account, value: auctionEntryWei });
     }).catch(function(err) {
       console.error(err);
     });
