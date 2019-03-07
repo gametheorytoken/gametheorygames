@@ -65,7 +65,7 @@ contract CurrentKing {
   // initialize
   uint256 public REWARD_PER_WIN = 10000000;
   uint256 public CREATOR_REWARD = 100000;
-  address public CREATOR_ADDRESS = 0x1CB3f4482C1f89c5c9457fA2eB634885462E4372;
+  address public CREATOR_ADDRESS;
   address public GTT_ADDRESS;
 
   // game state params
@@ -73,6 +73,7 @@ contract CurrentKing {
   address public currentKing;
 
   constructor() public {
+    CREATOR_ADDRESS = msg.sender;
     lastPaidBlock = block.number;
     currentKing = address(this);
   }

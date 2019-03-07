@@ -3,11 +3,11 @@ App = {
   contracts: {},
   account: '0x0',
   hasVoted: false,
-  gttAddress: "0x11aC1f32C1AcA8c35071E5a6F2B56A4df61499aa",
-  gameGasPriceAddress: "0x314f3A53cD3CB31976360Aa70Bd70F2CB57BCC05",
-  gameNoTxAddress: "0x7f34010D90339CCDd7BAff1A4F0D1D9fB125F487",
-  gameCurrentKingAddress: "0xbA7d3A0Dec9DaaA0036CFC8E09430a794c2f3D00",
-  gameAuctionAddress: "0x9De5De3921e09db04852DF680D14Cc1090FD4fF8",
+  gttAddress: "0x73522355C2021da800705305aD45b0AB64fC2352",
+  gameGasPriceAddress: "0xE7b4d1Fc14DD3085D4BCE615079821E099A61596",
+  gameNoTxAddress: "0x14C6c72d7734b3a689DB376944548b1F8738BeCB",
+  gameCurrentKingAddress: "0x908b089Dcf91eC0a6326816CEdc6D313eFc73046",
+  gameAuctionAddress: "0xFeD9094647b00A88170D599cB592366c56D48ed6",
   init: function() {
     return App.initWeb3();
   },
@@ -110,7 +110,9 @@ App = {
     App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
       return instance.currHighest();
     }).then(function(ans) {
+        console.log(ans)
         auctionPriceWei = ans / (10**18)
+        console.log(auctionPriceWei)
         $("#currHighest").html("" + auctionPriceWei.toString().substring(0,4) + " ETH/GTT");
       })
 

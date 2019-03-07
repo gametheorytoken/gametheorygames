@@ -9,7 +9,7 @@ contract NoTx {
   // initialize
   uint256 public REWARD_PER_WIN = 125000000;
   uint256 public CREATOR_REWARD = 1250000;
-  address public CREATOR_ADDRESS = 0x1CB3f4482C1f89c5c9457fA2eB634885462E4372;
+  address public CREATOR_ADDRESS;
   address public GTT_ADDRESS;
 
   // game state params
@@ -19,6 +19,7 @@ contract NoTx {
   mapping (uint256 => bool) public didBlockHaveTx;  // blockNumber, didBlockHaveTx
 
   constructor() public {
+    CREATOR_ADDRESS = msg.sender;
     currWinner = address(this);
   }
 

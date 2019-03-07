@@ -8,14 +8,16 @@ contract Auction {
 
   uint256 public REWARD_PER_WIN = 625000000;
   uint256 public CREATOR_REWARD = 6250000;
-  address public CREATOR_ADDRESS = 0x1CB3f4482C1f89c5c9457fA2eB634885462E4372;
+  address public CREATOR_ADDRESS;
   address public GTT_ADDRESS;
 
   address public currWinner;   // winner
   uint256 public currHighest;  // highest bet
+  uint256 public lastHighest;  // last highest bet
   uint256 public lastAuctionStart;
 
   constructor() public {
+    CREATOR_ADDRESS = msg.sender;
     lastAuctionStart = block.number;
     currWinner = address(this);
   }
@@ -37,6 +39,7 @@ contract Auction {
       // reset state for new auction
       lastAuctionStart = currentBlock;
       currWinner = address(this);
+      lastHighest = currHighest;
       currHighest = 0;
     }
 
