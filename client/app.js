@@ -3,6 +3,7 @@ App = {
   contracts: {},
   account: '0x0',
   hasVoted: false,
+  maxGTT: 25000000000000,
   gttAddress: "0x4E9D69f78f81e87C1e7118E5c6f248eFa296672b",
   gameGasPriceAddress: "0xF3b72A4DEAd2368E7Da7b17dDd354D59ae5901a6",
   gameNoTxAddress: "0x399600B7C7a89D2052aDf531FF01E31b2e29577a",
@@ -79,12 +80,12 @@ App = {
     // get block number
     web3.eth.getBlockNumber(function(error, result){
       if(!error){
-        console.log(result);
-        document.getElementById('ethereumBlockNumber').innerHTML = document.getElementById('ethereumBlockNumber').innerHTML+"<br>"+result;
+        App.blockNumber = document.getElementById('ethereumBlockNumber').innerHTML = document.getElementById('ethereumBlockNumber').innerHTML+"<br>"+result;
+        App.blockNumber;
       } else
         console.error(error);
       });
-      
+
     // get gtt balance
     App.contracts.GTT.at(App.gttAddress).then(function(instance) {
       return instance.balanceOf(App.account);
@@ -92,6 +93,52 @@ App = {
         gttBalanceWei = ans / (10**8)
         $("#gttBalance").html("" + gttBalanceWei);
       })
+
+    // get lowest gas tokens claimed
+    App.contracts.GTT.at(App.gttAddress).then(function(instance) {
+      return instance.balanceOf(App.gameGasPriceAddress);
+    }).then(function(gttInContract) {
+        gttClaimed = App.maxGTT - gttInContract
+        gttClaimedWei = gttClaimed / (10**8)
+        $("#gttBalanceGasPrice").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,4));
+    })
+
+    // get no tx tokens claimed
+    App.contracts.GTT.at(App.gttAddress).then(function(instance) {
+      return instance.balanceOf(App.gameNoTxAddress);
+    }).then(function(gttInContract) {
+        gttClaimed = App.maxGTT - gttInContract
+        gttClaimedWei = gttClaimed / (10**8)
+        $("#gttBalanceNoTx").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,4));
+    })
+
+    // get current king tokens claimed
+    App.contracts.GTT.at(App.gttAddress).then(function(instance) {
+      return instance.balanceOf(App.gameCurrentKingAddress);
+    }).then(function(gttInContract) {
+        gttClaimed = App.maxGTT - gttInContract
+        gttClaimedWei = gttClaimed / (10**8)
+        $("#gttBalanceCurrentKing").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,4));
+    })
+
+    // get auction tokens claimed
+    App.contracts.GTT.at(App.gttAddress).then(function(instance) {
+      return instance.balanceOf(App.gameAuctionAddress);
+    }).then(function(gttInContract) {
+        gttClaimed = App.maxGTT - gttInContract
+        gttClaimedWei = gttClaimed / (10**8)
+        $("#gttBalanceAuction").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,4));
+    })
+
+    // get auction blocks left
+    App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
+      return instance.lastAuctionStart();
+    }).then(function(lastAuctionStart) {
+        currentBlockInt = parseInt(App.blockNumber.toString().substring(4))
+        blocksLeft = 50 - (currentBlockInt - lastAuctionStart)
+        blocksLeft = blocksLeft > 0 ? blocksLeft : 0
+        $("#auctionBlocksRemaining").html("Blocks Remaining in Auction: " + blocksLeft);
+    })
 
     // get lowest gas
     App.contracts.GasPrice.at(App.gameGasPriceAddress).then(function(instance) {
@@ -112,7 +159,6 @@ App = {
     App.contracts.CurrentKing.at(App.gameCurrentKingAddress).then(function(instance) {
       return instance.currentKing();
     }).then(function(ans) {
-        console.log(ans)
         $("#currentKing").html("" + ans.substring(0,8) + "...");
       })
 
@@ -120,9 +166,7 @@ App = {
     App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
       return instance.currHighest();
     }).then(function(ans) {
-        console.log(ans)
         auctionPriceWei = ans / (10**18)
-        console.log(auctionPriceWei)
         $("#currHighest").html("" + auctionPriceWei.toString().substring(0,4) + " ETH/GTT");
       })
 
@@ -155,8 +199,6 @@ App = {
   playGasPrice: function(gasPriceEntry) {
     App.contracts.GasPrice.at(App.gameGasPriceAddress).then(function(instance) {
       gasPriceEntryWei = gasPriceEntry * (10**9)
-      console.log(gasPriceEntryWei)
-      console.log
       return instance.play({ from: App.account, gasPrice: gasPriceEntryWei });
     }).catch(function(err) {
       console.error(err);
@@ -183,9 +225,7 @@ App = {
 
   playAuction: function(auctionEntry) {
     App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
-      console.log(auctionEntry)
       auctionEntryWei = auctionEntry * (10**9)
-      console.log(auctionEntryWei)
       return instance.play({ from: App.account, gasPrice: auctionEntryWei });
     }).catch(function(err) {
       console.error(err);

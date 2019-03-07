@@ -50,6 +50,9 @@
                 			<button onclick="App.playGasPrice(document.getElementById('gasPriceEntry').value); return false;">Send Tx</button>
                   </div>
                   </div>
+                  <div style="margin-top: -15px; width: 350px; text-align: right; font-size: 0.7em;">
+                    <p id="gttBalanceGasPrice"></p>
+                  </div>
                 </div>
                 <div class="column">
                   <div class="fast-transition">
@@ -71,6 +74,9 @@
                       <input type="text" class="form__field" placeholder="Enter Gas Price" id="noTxEntry" />
                 			<button onclick="App.playNoTx(document.getElementById('noTxEntry').value); return false;">Send Tx</button>
                     </div>
+                  </div>
+                  <div style="margin-top: -15px; width: 350px; text-align: right; font-size: 0.7em;">
+                    <p id="gttBalanceNoTx"></p>
                   </div>
                 </div>
               </div>
@@ -97,6 +103,9 @@
                 			<button onclick="App.playCurrentKing(document.getElementById('currentKingEntry').value); return false;">Send Tx</button>
                     </div>
                   </div>
+                  <div style="margin-top: -15px; width: 350px; text-align: right; font-size: 0.7em;">
+                    <p id="gttBalanceCurrentKing"></p>
+                  </div>
                 </div>
 
                 <div class="column">
@@ -114,11 +123,22 @@
                               <p id="currHighest" style="width: 70px;"></p>
                             </div>
                           </div>
+                          <div class="rowthree">
+                            <div class="columnthreel">
+                              <p id="currHighest" style="width: 70px;"></p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       </div>
                       <input type="text" class="form__field" placeholder="Enter Gas Price" id="auctionEntry" />
                 			<button onclick="App.playAuction(document.getElementById('auctionEntry').value); return false;">Send Tx</button>
+                    </div>
+                    <div style="margin-top: -15px; width: 350px; text-align: right; font-size: 0.7em;">
+                      <p id="gttBalanceAuction"></p>
+                    </div>
+                    <div style="margin-top: -25px; width: 350px; text-align: left; font-size: 0.7em;">
+                      <p id="auctionBlocksRemaining"></p>
                     </div>
                   </div>
                 </div>
