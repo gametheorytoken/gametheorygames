@@ -3,10 +3,10 @@ App = {
   contracts: {},
   account: '0x0',
   hasVoted: false,
-  gameGasPriceAddress: "0x83d683bc8662d50e06e1b5c84aa052b3cfbe6480",
-  gameNoTxAddress: "0xb6a2f641014c98baed0c60b1b5427526fa556888",
-  gameCurrentKingAddress: "0x83fb7fd075bc0700250e59663a5a3d3ed9824aa7",
-  gameAuctionAddress: "0xc8ba6a9326064645c45d57c947477e26aea64c08",
+  gameGasPriceAddress: "0xc372B7985580ec9c7EB797e49e00C39755D05901",
+  gameNoTxAddress: "0xfbb33A896f834E1470eB86840001bd1241ffbCe1",
+  gameCurrentKingAddress: "0x26A33402F20992417070d8f319BBa32aF28BDF13",
+  gameAuctionAddress: "0x02F22652e594ab44db7527b2F3cD5523253429eE",
 
   init: function() {
     return App.initWeb3();
@@ -126,7 +126,8 @@ App = {
   // send transactions
   playGasPrice: function() {
     App.contracts.GasPrice.at(App.gameGasPriceAddress).then(function(instance) {
-      return instance.play({ from: App.account });
+      var gasPriceEntry = $('#gasPriceEntry');
+      return instance.play({ from: App.account, gasPrice: gasPriceEntry });
     }).catch(function(err) {
       console.error(err);
     });
@@ -134,7 +135,8 @@ App = {
 
   playNoTx: function() {
     App.contracts.NoTx.at(App.gameNoTxAddress).then(function(instance) {
-      return instance.play({ from: App.account });
+      var noTxEntry = $('#noTxEntry');
+      return instance.play({ from: App.account, gasPrice: noTxEntry });
     }).catch(function(err) {
       console.error(err);
     });
@@ -142,7 +144,8 @@ App = {
 
   playCurrentKing: function() {
     App.contracts.CurrentKing.at(App.gameCurrentKingAddress).then(function(instance) {
-      return instance.play({ from: App.account });
+      var currentKingEntry = $('#currentKingEntry');
+      return instance.play({ from: App.account, gasPrice: currentKingEntry });
     }).catch(function(err) {
       console.error(err);
     });
@@ -150,7 +153,8 @@ App = {
 
   playAuction: function() {
     App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
-      return instance.play({ from: App.account });
+      var auctionEntry = $('#auctionEntry');
+      return instance.play({ from: App.account, value: auctionEntry });
     }).catch(function(err) {
       console.error(err);
     });
