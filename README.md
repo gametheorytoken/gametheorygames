@@ -21,7 +21,7 @@ _Note: The winning tokens for each game are distributed upon the transaction fol
 
 ## The Games
 
-_Note: No ETH should ever be sent to any of these games. All the games are played based on gas price of current balance in your account. If you are sending ETH to the contract, you are not playing correctly **and you will lose your money forever**._
+_Note: No ETH should ever be sent to any of these games. All the games are played based on gas price of current balance in your account. If you are sending ETH to the contract, you are not playing correctly and the transaction you send will not be successful._
 
 
 **Lowest Gas Price per Block - 0.125 GTT/reward**: The user who pays the _lowest_ gasPrice in a block for a transaction to this contract wins the tokens. You are not only playing against other players, but with miners who may or may not include your transaction at such a low cost. If multiple transactions with the same gasPrice are included in a single block, the winner will be the user's transaction that is chosen _last_ by miners.
