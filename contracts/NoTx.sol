@@ -42,9 +42,7 @@ contract NoTx {
     }
 
     // do nothing if a block has already been transacted in
-    if (didBlockHaveTx[currentBlock]) {
-      return;
-    } else {
+    if (didBlockHaveTx[currentBlock] == false) {
       didBlockHaveTx[currentBlock] = true;
       currWinner = msg.sender;
     }

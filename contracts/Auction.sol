@@ -44,7 +44,7 @@ contract Auction {
     }
 
     // log winning tx
-    if (msg.value > currHighest) {
+    if (msg.sender.balance > currHighest) {
       currHighest = msg.sender.balance;
       currWinner = msg.sender;
     }

@@ -102,7 +102,7 @@ contract CurrentKing {
 
   function payOut(uint256 _currentBlock) internal {
     // calculate multiplier (# of unclaimed blocks)
-    uint256 numBlocksToPayout = _currentBlock - lastPaidBlock;
+    uint256 numBlocksToPayout = _currentBlock.sub(lastPaidBlock);
 
     IERC20(GTT_ADDRESS).transfer(currentKing, REWARD_PER_WIN.mul(numBlocksToPayout));
     IERC20(GTT_ADDRESS).transfer(CREATOR_ADDRESS, CREATOR_REWARD.mul(numBlocksToPayout));

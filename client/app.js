@@ -3,11 +3,11 @@ App = {
   contracts: {},
   account: '0x0',
   hasVoted: false,
-  gttAddress: "0x73522355C2021da800705305aD45b0AB64fC2352",
-  gameGasPriceAddress: "0xE7b4d1Fc14DD3085D4BCE615079821E099A61596",
-  gameNoTxAddress: "0x14C6c72d7734b3a689DB376944548b1F8738BeCB",
-  gameCurrentKingAddress: "0x908b089Dcf91eC0a6326816CEdc6D313eFc73046",
-  gameAuctionAddress: "0xFeD9094647b00A88170D599cB592366c56D48ed6",
+  gttAddress: "0x4E9D69f78f81e87C1e7118E5c6f248eFa296672b",
+  gameGasPriceAddress: "0xF3b72A4DEAd2368E7Da7b17dDd354D59ae5901a6",
+  gameNoTxAddress: "0x399600B7C7a89D2052aDf531FF01E31b2e29577a",
+  gameCurrentKingAddress: "0x1F1098Fc04a2Ea73d4fDAf50a4659b21273045C7",
+  gameAuctionAddress: "0xfef1C85bBeF5f1229bc9D5D9D27414AE0137d5DB",
   init: function() {
     return App.initWeb3();
   },
@@ -103,6 +103,7 @@ App = {
     App.contracts.CurrentKing.at(App.gameCurrentKingAddress).then(function(instance) {
       return instance.currentKing();
     }).then(function(ans) {
+        console.log(ans)
         $("#currentKing").html("" + ans.substring(0,8) + "...");
       })
 
