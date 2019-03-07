@@ -131,7 +131,6 @@ contract ERC20 {
     }
 }
 
-
 contract GameTheoryToken is ERC20 {
 
   uint256 constant public MAX_SUPPLY = 100000000000000;
@@ -143,13 +142,25 @@ contract GameTheoryToken is ERC20 {
 
   address public gasPriceGame;
   address public lastBlockGame;
-  address public currentOwnerGame;
+  address public currentKingGame;
   address public auctionGame;
 
-  constructor() public {
+  constructor(
+    address _gasPriceGame,
+    address _lastBlockGame,
+    address _currentKingGame,
+    address _auctionGame
+  )
+    public
+  {
+    gasPriceGame = _gasPriceGame;
+    lastBlockGame = _lastBlockGame;
+    currentKingGame = _currentKingGame;
+    auctionGame = _auctionGame;
+
     _mint(gasPriceGame, SUPPLY_PER_CONTRACT);
     _mint(lastBlockGame, SUPPLY_PER_CONTRACT);
-    _mint(currentOwnerGame, SUPPLY_PER_CONTRACT);
+    _mint(currentKingGame, SUPPLY_PER_CONTRACT);
     _mint(auctionGame, SUPPLY_PER_CONTRACT);
   }
 

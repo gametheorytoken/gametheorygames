@@ -8,16 +8,14 @@ contract Auction {
 
   uint256 public REWARD_PER_WIN = 625000000;
   uint256 public CREATOR_REWARD = 6250000;
-  address public CREATOR_ADDRESS;
+  address public CREATOR_ADDRESS = 0x1CB3f4482C1f89c5c9457fA2eB634885462E4372;
   address public GTT_ADDRESS;
 
   address public currWinner;   // winner
   uint256 public currHighest;  // highest bet
   uint256 public lastAuctionStart;
 
-
-
-  // Can only be called once
+  // can only be called once
   function setTokenAddress(address _gttAddress) public {
     if (GTT_ADDRESS == address(0)) {
       GTT_ADDRESS = _gttAddress;

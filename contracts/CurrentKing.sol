@@ -65,14 +65,18 @@ contract CurrentKing {
   // initialize
   uint256 public REWARD_PER_WIN = 10000000;
   uint256 public CREATOR_REWARD = 100000;
-  address public CREATOR_ADDRESS;
+  address public CREATOR_ADDRESS = 0x1CB3f4482C1f89c5c9457fA2eB634885462E4372;
   address public GTT_ADDRESS;
 
   // game state params
   uint256 public lastPaidBlock;
   address public currentKing;
 
-  // Can only be called once
+  constructor() public {
+    lastPaidBlock = block.number;
+  }
+
+  // can only be called once
   function setTokenAddress(address _gttAddress) public {
     if (GTT_ADDRESS == address(0)) {
       GTT_ADDRESS = _gttAddress;
