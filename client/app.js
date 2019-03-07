@@ -3,10 +3,11 @@ App = {
   contracts: {},
   account: '0x0',
   hasVoted: false,
-  gameGasPriceAddress: "0x0517c259b0a042B9981d7D8475A9720169aB431e",
-  gameNoTxAddress: "0xfbb33A896f834E1470eB86840001bd1241ffbCe1",
-  gameCurrentKingAddress: "0x26A33402F20992417070d8f319BBa32aF28BDF13",
-  gameAuctionAddress: "0x02F22652e594ab44db7527b2F3cD5523253429eE",
+  gttAddress: "0xcFf8f8e363b89aC96d81e2Ec5f5A80063434ad03",
+  gameGasPriceAddress: "0x8301D3b998C7670BE5394f88cF296F7c296265d6",
+  gameNoTxAddress: "0x5fB6277B54ACcE2Ca10F43290556a4ef323f890D",
+  gameCurrentKingAddress: "0xf8dfDe37b19dF1Cc67BFA7bD121cD132DF0e012d",
+  gameAuctionAddress: "0x676A6A6a0Ba18bDB366514a31d674694867Ca1F3",
   init: function() {
     return App.initWeb3();
   },
@@ -22,10 +23,18 @@ App = {
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
       web3 = new Web3(App.web3Provider);
     }
-    return App.initContractGasPrice();
+    return App.initContractGTT();
   },
 
   // create contracts
+  initContractGTT: function() {
+    $.getJSON("GameTheoryToken.json", function(balance) {
+      App.contracts.GTT = TruffleContract(balance);
+      App.contracts.GTT.setProvider(App.web3Provider);
+      return App.initContractGasPrice();
+    });
+  },
+
   initContractGasPrice: function() {
     $.getJSON("GasPrice.json", function(gasPrice) {
       App.contracts.GasPrice = TruffleContract(gasPrice);
@@ -58,8 +67,6 @@ App = {
     });
   },
 
-
-
   render: function() {
 
     // get account address
@@ -69,18 +76,27 @@ App = {
       }
     });
 
+    // get gtt balance
+    App.contracts.GTT.at(App.gttAddress).then(function(instance) {
+      return instance.balanceOf(App.account);
+    }).then(function(ans) {
+        gttBalanceWei = ans / (10**8)
+        $("#gttBalance").html("" + gttBalanceWei);
+      })
+
     // get lowest gas
     App.contracts.GasPrice.at(App.gameGasPriceAddress).then(function(instance) {
       return instance.currLowest();
     }).then(function(ans) {
-        $("#lowestGas").html("" + ans);
+      gasPriceWei = ans / (10**9)
+      $("#lowestGas").html("" + gasPriceWei.toString().substring(0,2) + " Gwei");
       })
 
     // get last block without tx
     App.contracts.NoTx.at(App.gameNoTxAddress).then(function(instance) {
       return instance.lastPayout();
     }).then(function(ans) {
-        $("#lastBlock").html("" + ans);
+        $("#lastBlock").html("" + ans + " Blocks");
       })
 
     // get current king
@@ -94,7 +110,7 @@ App = {
     App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
       return instance.currHighest();
     }).then(function(ans) {
-        $("#currHighest").html("" + ans);
+        $("#currHighest").html("" + ans + " ETH/GTT");
       })
 
 
