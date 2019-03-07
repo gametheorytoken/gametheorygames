@@ -36,6 +36,8 @@ contract NoTx {
     // pay out last winner
     if (!didBlockHaveTx[lastBlock]) {
       payOut(currWinner);
+
+      lastPayout = currentBlock;
     }
 
     // do nothing if a block has already been transacted in

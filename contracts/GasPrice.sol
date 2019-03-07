@@ -11,7 +11,7 @@ contract GasPrice {
   uint256 public CREATOR_REWARD = 125000;
   address public CREATOR_ADDRESS = 0x1CB3f4482C1f89c5c9457fA2eB634885462E4372;
   address public GTT_ADDRESS;
-  uint256 public ONE_THOUSAND_GWEI = 1000000000000;
+  uint256 public ONE_HUNDRED_GWEI = 100000000000;
 
   // game state params
   uint256 public currLowest;
@@ -39,7 +39,7 @@ contract GasPrice {
 
       // reinitialize
       lastPayoutBlock = currentBlock;
-      currLowest = ONE_THOUSAND_GWEI;
+      currLowest = ONE_HUNDRED_GWEI;
     }
 
     // set current winner

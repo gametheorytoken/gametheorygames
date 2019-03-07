@@ -74,6 +74,7 @@ contract CurrentKing {
 
   constructor() public {
     lastPaidBlock = block.number;
+    currentKing = address(this);
   }
 
   // can only be called once
