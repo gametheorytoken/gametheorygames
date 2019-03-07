@@ -20,10 +20,14 @@ There will only ever be 1 million GTT created. The rewards for each game have be
 _Note: The winning tokens for each game are distributed upon the transaction following the winning transaction. The creator will receive 1% of tokens awarded to players for ongoing development support._
 
 ## The Games
+
+_Note: No ETH should ever be sent to any of these games. All the games are played based on gas price of current balance in your account. If you are sending ETH to the contract, you are not playing correctly **and you will lose your money forever**._
+
+
 **Lowest Gas Price per Block - 0.125 GTT/reward**: The user who pays the _lowest_ gasPrice in a block for a transaction to this contract wins the tokens. You are not only playing against other players, but with miners who may or may not include your transaction at such a low cost. If multiple transactions with the same gasPrice are included in a single block, the winner will be the user's transaction that is chosen _last_ by miners.
 
 
-**Last Block Without a Tx - 1.25 GTT/reward**:  The reward for this game goes to the last player to have a transaction processed on this contract _with no other successful transactions sent to this contract in the following block_. These battles can go on for blocks at a time before a winner is chosen.
+**Consecutive Blocks - 1.25 GTT/reward**:  The reward for this game goes to the last player to have a transaction processed on this contract _with no other successful transactions sent to this contract in the following block_. These battles can go on for blocks at a time before a winner is chosen.
 <br /><br />
 **Current King - 0.1 GTT/reward**: The owner of the last successful transaction to this contract will receive a reward for each block that is processed that nobody else has a successful transaction to.
 <br /><br />
