@@ -14,7 +14,7 @@ contract NoTx {
 
   // game state params
   uint256 public lastPayout;
-  address public currentWinner;
+  address public currWinner;
 
   mapping (uint256 => bool) public didBlockHaveTx;  // blockNumber, didBlockHaveTx
 
