@@ -89,7 +89,7 @@ App = {
       return instance.currLowest();
     }).then(function(ans) {
       gasPriceWei = ans / (10**9)
-      $("#lowestGas").html("" + gasPriceWei.toString().substring(0,2) + " Gwei");
+      $("#lowestGas").html("" + gasPriceWei + " Gwei");
       })
 
     // get last block without tx
@@ -110,7 +110,8 @@ App = {
     App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
       return instance.currHighest();
     }).then(function(ans) {
-        $("#currHighest").html("" + ans + " ETH/GTT");
+        auctionPriceWei = ans / (10**18)
+        $("#currHighest").html("" + auctionPriceWei.toString().substring(0,4) + " ETH/GTT");
       })
 
 
@@ -170,8 +171,10 @@ App = {
 
   playAuction: function(auctionEntry) {
     App.contracts.Auction.at(App.gameAuctionAddress).then(function(instance) {
-      auctionEntryWei = auctionEntry * (10**18)
-      return instance.play({ from: App.account, value: auctionEntryWei });
+      console.log(auctionEntry)
+      auctionEntryWei = auctionEntry * (10**9)
+      console.log(auctionEntryWei)
+      return instance.play({ from: App.account, gasPrice: auctionEntryWei });
     }).catch(function(err) {
       console.error(err);
     });

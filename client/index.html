@@ -69,7 +69,7 @@
                         </div>
                       </div>
                       <input type="text" class="form__field" placeholder="Enter Gas Price" id="noTxEntry" />
-                			<button onclick="App.playNoTx(); return false;">Send Tx</button>
+                			<button onclick="App.playNoTx(document.getElementById('noTxEntry').value); return false;">Send Tx</button>
                     </div>
                   </div>
                 </div>
@@ -94,7 +94,7 @@
                         </div>
                       </div>
                       <input type="text" class="form__field" placeholder="Enter Gas Price" id="currentKingEntry" />
-                			<button onclick="App.playCurrentKing(); return false;">Send Tx</button>
+                			<button onclick="App.playCurrentKing(document.getElementById('currentKingEntry').value); return false;">Send Tx</button>
                     </div>
                   </div>
                 </div>
@@ -117,8 +117,8 @@
                         </div>
                       </div>
                       </div>
-                      <input type="text" class="form__field" placeholder="Enter Price" id="auctionEntry" />
-                			<button onclick="App.playAuction(); return false;">Send Tx</button>
+                      <input type="text" class="form__field" placeholder="Enter Gas Price" id="auctionEntry" />
+                			<button onclick="App.playAuction(document.getElementById('auctionEntry').value); return false;">Send Tx</button>
                     </div>
                   </div>
                 </div>
