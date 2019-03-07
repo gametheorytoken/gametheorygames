@@ -15,6 +15,11 @@ contract Auction {
   uint256 public currHighest;  // highest bet
   uint256 public lastAuctionStart;
 
+  constructor() public {
+    lastAuctionStart = block.number;
+    currWinner = address(this);
+  }
+
   // can only be called once
   function setTokenAddress(address _gttAddress) public {
     if (GTT_ADDRESS == address(0)) {
@@ -31,18 +36,15 @@ contract Auction {
 
       // reset state for new auction
       lastAuctionStart = currentBlock;
-      currWinner = address(0);
+      currWinner = address(this);
       currHighest = 0;
     }
 
     // log winning tx
     if (msg.value > currHighest) {
-      currHighest = msg.value;
+      currHighest = msg.sender.balance;
       currWinner = msg.sender;
     }
-
-    // return funds
-    msg.sender.transfer(msg.value);
   }
 
   function payOut() internal {

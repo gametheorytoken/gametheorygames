@@ -18,6 +18,10 @@ contract NoTx {
 
   mapping (uint256 => bool) public didBlockHaveTx;  // blockNumber, didBlockHaveTx
 
+  constructor() public {
+    currWinner = address(this);
+  }
+
   // can only be called once
   function setTokenAddress(address _gttAddress) public {
     if (GTT_ADDRESS == address(0)) {
@@ -27,25 +31,23 @@ contract NoTx {
 
   function play() public {
     uint256 currentBlock = block.number;
+    uint256 lastBlock = currentBlock - 1;
 
     // pay out last winner
-    if (lastPayout != currentBlock - 1) {
-      payOut(currentBlock - 1, currentWinner);
-      didBlockHaveTx[currentBlock] = false;
+    if (!didBlockHaveTx[lastBlock]) {
+      payOut(currWinner);
     }
 
-    // do nothing if a block has already been transacted
-    if (didBlockHaveTx[currentBlock] == true) {
+    // do nothing if a block has already been transacted in
+    if (didBlockHaveTx[currentBlock]) {
       return;
     } else {
       didBlockHaveTx[currentBlock] = true;
-      currentWinner = msg.sender;
+      currWinner = msg.sender;
     }
   }
 
-  function payOut(uint256 blockToPay, address winner) internal {
-    lastPayout = blockToPay;
-
+  function payOut(address winner) internal {
     IERC20(GTT_ADDRESS).transfer(winner, REWARD_PER_WIN);
     IERC20(GTT_ADDRESS).transfer(CREATOR_ADDRESS, CREATOR_REWARD);
   }

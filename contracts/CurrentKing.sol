@@ -89,16 +89,18 @@ contract CurrentKing {
     // pay old king
     if (currentBlock != lastPaidBlock) {
       payOut(currentBlock);
+
+      // reinitialize
+      lastPaidBlock = currentBlock;
     }
 
     // set new king
     currentKing = msg.sender;
   }
 
-  function payOut(uint256 currentBlock) internal {
+  function payOut(uint256 _currentBlock) internal {
     // calculate multiplier (# of unclaimed blocks)
-    uint256 numBlocksToPayout = currentBlock - lastPaidBlock;
-    lastPaidBlock = currentBlock;
+    uint256 numBlocksToPayout = _currentBlock - lastPaidBlock;
 
     IERC20(GTT_ADDRESS).transfer(currentKing, REWARD_PER_WIN.mul(numBlocksToPayout));
     IERC20(GTT_ADDRESS).transfer(CREATOR_ADDRESS, CREATOR_REWARD.mul(numBlocksToPayout));

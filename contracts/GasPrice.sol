@@ -15,11 +15,12 @@ contract GasPrice {
 
   // game state params
   uint256 public currLowest;
-  uint256 public lastPayout;
+  uint256 public lastPayoutBlock;
   address public currWinner;
 
   constructor() public {
-    lastPayout = block.number;
+    lastPayoutBlock = block.number;
+    currWinner = address(this);
   }
 
   // can only be called once
@@ -33,11 +34,11 @@ contract GasPrice {
     uint256 currentBlock = block.number;
 
     // pay out last winner
-    if (lastPayout == currentBlock - 2) {
+    if (lastPayoutBlock < currentBlock) {
       payOut(currWinner);
 
       // reinitialize
-      lastPayout = currentBlock - 1;
+      lastPayoutBlock = currentBlock;
       currLowest = ONE_THOUSAND_GWEI;
     }
 
