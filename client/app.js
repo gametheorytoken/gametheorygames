@@ -76,6 +76,15 @@ App = {
       }
     });
 
+    // get block number
+    web3.eth.getBlockNumber(function(error, result){
+      if(!error){
+        console.log(result);
+        document.getElementById('ethereumBlockNumber').innerHTML = document.getElementById('ethereumBlockNumber').innerHTML+"<br>"+result;
+      } else
+        console.error(error);
+      });
+      
     // get gtt balance
     App.contracts.GTT.at(App.gttAddress).then(function(instance) {
       return instance.balanceOf(App.account);
