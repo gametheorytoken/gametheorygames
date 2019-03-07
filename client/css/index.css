@@ -182,7 +182,7 @@ button:hover:before,button:hover:after{
   /* font: inherit; */
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
   border: 1px solid black; /* Green */
-  border-radius: 3px;
+  border-radius: 7px;
   outline: 0;
   z-index: 12;
 
