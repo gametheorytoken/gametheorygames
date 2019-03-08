@@ -36,3 +36,7 @@ _Note: No ETH should ever be sent to any of these games. All the games are playe
 ## Inspiration
 
 This website and these contracts were inspired by <a href="https://twitter.com/soundmoneycoin/">SoundMoneyCoin</a> and the intellectual spirit of the Ethereum Community.
+
+## Suggestions
+
+All suggestions are welcome. Submit any items of concern to gametheorycoin@protonmail.com.
