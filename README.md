@@ -2,7 +2,7 @@
   Game Theory Games
 </h1>
 
-![gameboard](https://github.com/gametheorycoin/gametheorygames/blob/master/client/static/gameboard.png)
+![gameboard](https://github.com/gametheorytoken/gametheorygames/blob/master/client/static/gameboard.png)
 
 ## How It Works
 Game Theory Games are a truly decentralized way to earn Game Theory Token, an ERC20 token with no owner.  All the games are immutable smart contracts that run on the Ethereum network and cannot be changed or upgraded.
