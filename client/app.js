@@ -100,7 +100,7 @@ App = {
     }).then(function(gttInContract) {
         gttClaimed = App.maxGTT - gttInContract
         gttClaimedWei = gttClaimed / (10**8)
-        $("#gttBalanceGasPrice").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,4));
+        $("#gttBalanceGasPrice").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,5));
     })
 
     // get no tx tokens claimed
@@ -109,7 +109,7 @@ App = {
     }).then(function(gttInContract) {
         gttClaimed = App.maxGTT - gttInContract
         gttClaimedWei = gttClaimed / (10**8)
-        $("#gttBalanceNoTx").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,4));
+        $("#gttBalanceNoTx").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,5));
     })
 
     // get current king tokens claimed
@@ -118,7 +118,7 @@ App = {
     }).then(function(gttInContract) {
         gttClaimed = App.maxGTT - gttInContract
         gttClaimedWei = gttClaimed / (10**8)
-        $("#gttBalanceCurrentKing").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,4));
+        $("#gttBalanceCurrentKing").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,5));
     })
 
     // get auction tokens claimed
@@ -127,7 +127,7 @@ App = {
     }).then(function(gttInContract) {
         gttClaimed = App.maxGTT - gttInContract
         gttClaimedWei = gttClaimed / (10**8)
-        $("#gttBalanceAuction").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,4));
+        $("#gttBalanceAuction").html("Number of GTT Claimed: " + gttClaimedWei.toString().substring(0,5));
     })
 
     // get auction blocks left
