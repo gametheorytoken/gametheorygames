@@ -29,9 +29,9 @@ _Note: No ETH should ever be sent to any of these games. All the games are playe
 
 **Consecutive Blocks - 1.25 GTT/reward**:  The reward for this game goes to the last player to have a transaction processed on this contract _with no other successful transactions sent to this contract in the following block_. These battles can go on for blocks at a time before a winner is chosen.
 <br /><br />
-**Current King - 0.1 GTT/reward**: The owner of the last successful transaction to this contract will receive a reward for each block that is processed that nobody else has a successful transaction to.
+**Current King - 0.1 GTT/reward**: The owner of the last successful transaction to this contract will receive a reward for each block that is processed. These rewards end when a new player submits a successful transaction to the contract.
 <br /><br />
-**Auction - 6.25 GTT/reward**: Players participate in a bidding fee auction auction that lasts 50 blocks. Auctions are only started by sending in the first transaction after the expiration of the last auction. Your bid is the current amount of ETH you are holding in your calling wallet. Should you wait to the last minute and your transaction may not be mined. Go to early and you will reveal your bid.
+**Auction - 6.25 GTT/reward**: Players participate in a bidding fee auction auction that lasts 50 blocks. Auctions are only started by sending in the first transaction after the expiration of the last auction. Your bid is the current amount of ETH you are holding in your calling wallet. Should you wait to the last minute and your transaction may not be mined. Go tot early and you will reveal your bid. _Note: You bid with all of the ETH you are holding. This does NOT send the ETH to the contract. Instead, the contract queries your wallet balance. You do not ever need to move your funds._
 
 ## Inspiration
 
